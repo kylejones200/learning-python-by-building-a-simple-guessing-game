@@ -1,19 +1,18 @@
+---
+author: "Kyle Jones"
+date_published: "December 20, 2023"
+date_exported_from_medium: "November 10, 2025"
+canonical_link: "https://medium.com/@kyle-t-jones/learning-python-by-building-a-simple-guessing-game-86d4f41fc2b8"
+---
+
 # Learning Python by building a Simple Guessing Game This is a simple project to show how you can input data and compare it
 against the value of a variable.
 
 ### Learning Python by building a simple guessing game
 #### This is a simple project to show how you can input data and compare it against the value of a variable.
-There are lots of ways to build a game in python. The purpose of this
-project is to introduce people new to python with some of the concepts
-of writing a simple program --- and to have a little fun.
+There are lots of ways to build a game in python. The purpose of this project is to introduce people new to python with some of the concepts of writing a simple program --- and to have a little fun.
 
-
-<figcaption>Photo by Cookie the Pom on Unsplash</figcaption>
-
-
-Learning to code is most fun when you're building something interactive!
-In this tutorial, we'll create a number guessing game that demonstrates
-several fundamental Python concepts:
+Learning to code is most fun when you're building something interactive! In this tutorial, we'll create a number guessing game that demonstrates several fundamental Python concepts:
 
 - Importing and using modules
 - Getting user input
@@ -22,19 +21,13 @@ several fundamental Python concepts:
 - Creating loops
 - String formatting
 
-The best part? You can play the game you build and share it with
-friends!
+The best part? You can play the game you build and share it with friends!
 
 ### The Game Concept
-The computer "thinks" of a random number between 1 and 20, and the
-player has 6 chances to guess it. After each guess, the computer
-provides a hint: "too high" or "too low". Let's build this step by step.
+The computer "thinks" of a random number between 1 and 20, and the player has 6 chances to guess it. After each guess, the computer provides a hint: "too high" or "too low". Let's build this step by step.
 
 ### Step 1: Setting Up the Game
-First, we need to import the `random`
-module and generate our secret number. Python has thousands of modules
-that add functionality\-\--`random` helps
-us generate random numbers.
+First, we need to import the `random` module and generate our secret number. Python has thousands of modules that add functionality\-\--`random` helps us generate random numbers.
 
 ```python
 import random
@@ -52,18 +45,13 @@ print("You have 6 chances to guess it. Good luck!\n")
 
 Key Concepts:
 
-- `random.randint(1, 20)` generates a
-  random integer from 1 to 20 (inclusive)
-- `input()` gets text from the user and
-  returns it as a string
-- `f"..."` creates a formatted string
-  (called an f-string) where you can embed variables
-- `print()` displays text to the
-  user
+- `random.randint(1, 20)` generates a random integer from 1 to 20 (inclusive)
+- `input()` gets text from the user and returns it as a string
+- `f"..."` creates a formatted string (called an f-string) where you can embed variables
+- `print()` displays text to the user
 
 ### Step 2: The Game Loop
-Now we create a loop that gives the player up to 6 attempts. We track
-how many guesses they've made and check if they found the answer.
+Now we create a loop that gives the player up to 6 attempts. We track how many guesses they've made and check if they found the answer.
 
 ``` 
 max_attempts = 6
@@ -98,20 +86,14 @@ while attempts < max_attempts:
 
 Key Concepts:
 
-- `while` creates a loop that continues
-  as long as the condition is true
-- `attempts += 1` is shorthand for
-  `attempts = attempts + 1`
-- `try/except` handles errors
-  gracefully (like when someone types \"five\" instead of 5)
-- `break` exits the loop
-  immediately
-- `continue` skips the rest of the loop
-  and goes to the next iteration
+- `while` creates a loop that continues as long as the condition is true
+- `attempts += 1` is shorthand for `attempts = attempts + 1`
+- `try/except` handles errors gracefully (like when someone types \"five\" instead of 5)
+- `break` exits the loop immediately
+- `continue` skips the rest of the loop and goes to the next iteration
 
 ### Step 3: Ending the Game
-Finally, if the player doesn't guess correctly within 6 attempts, we
-reveal the answer.
+Finally, if the player doesn't guess correctly within 6 attempts, we reveal the answer.
 
 ``` 
 # If they didn't win, tell them the answer
@@ -222,16 +204,11 @@ You guessed the number 12 in 5 tries!
 ### Challenge Yourself!
 Now that you have a working game, try these enhancements:
 
-1.  [Difficulty Levels: Let the player choose easy (1--10), medium
-    (1--20), or hard (1--50)]
-2.  [Play Again: Add a feature to play multiple rounds without
-    restarting the program]
-3.  [Scoring System: Award more points for guessing with fewer
-    attempts]
-4.  [Hints: After 3 wrong guesses, tell the player if the number is even
-    or odd]
-5.  [Best Score: Keep track of the player's best (fewest attempts)
-    across multiple games]
+1.  [Difficulty Levels: Let the player choose easy (1--10), medium (1--20), or hard (1--50)]
+2.  [Play Again: Add a feature to play multiple rounds without restarting the program]
+3.  [Scoring System: Award more points for guessing with fewer attempts]
+4.  [Hints: After 3 wrong guesses, tell the player if the number is even or odd]
+5.  [Best Score: Keep track of the player's best (fewest attempts) across multiple games]
 
 ### What You Learned
 By building this game, you've learned:
@@ -244,14 +221,4 @@ By building this game, you've learned:
 - Error handling with try/except
 - String formatting with f-strings
 
-These are fundamental skills you'll use in every Python program you
-write, from data analysis to web development to automation. The key is
-to start simple, make it work, then gradually add features. Keep
-experimenting and have fun coding!
-::::::::By [Kyle Jones](https://medium.com/@kyle-t-jones) on
-[December 20, 2023](https://medium.com/p/86d4f41fc2b8).
-
-[Canonical
-link](https://medium.com/@kyle-t-jones/learning-python-by-building-a-simple-guessing-game-86d4f41fc2b8)
-
-Exported from [Medium](https://medium.com) on November 10, 2025.
+These are fundamental skills you'll use in every Python program you write, from data analysis to web development to automation. The key is to start simple, make it work, then gradually add features. Keep experimenting and have fun coding!
