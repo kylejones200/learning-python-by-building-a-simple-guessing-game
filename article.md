@@ -163,38 +163,31 @@ Here's what a game session might look like:
 Welcome to the Number Guessing Game!
 ========================================
 What is your name? Sarah
-```
 
-``` 
+
 Hello, Sarah! I'm thinking of a number between 1 and 20.
 You have 6 chances to guess it. Good luck!
-```
 
-``` 
+
 Attempt 1: Enter your guess: 10
 Too low! Try a higher number.
-```
 
-``` 
+
 Attempt 2: Enter your guess: 15
 Too high! Try a lower number.
-```
 
-``` 
+
 Attempt 3: Enter your guess: 13
 Too high! Try a lower number.
-```
 
-``` 
+
 Attempt 4: Enter your guess: 11
 Too low! Try a higher number.
-```
 
-``` 
+
 Attempt 5: Enter your guess: 12
-```
 
-``` 
+
 ****************************************
 Congratulations, Sarah!
 You guessed the number 12 in 5 tries!
