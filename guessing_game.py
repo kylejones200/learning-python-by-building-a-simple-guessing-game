@@ -48,9 +48,7 @@ class GameRound:
     hints_shown: set[str] = field(default_factory=set)
 
     @classmethod
-    def create(
-        cls, difficulty: Difficulty, rng: random.Random | None = None
-    ) -> GameRound:
+    def create(cls, difficulty: Difficulty, rng: random.Random | None = None) -> GameRound:
         source = rng if rng is not None else random
         secret = source.randint(difficulty.low, difficulty.high)
         return cls(difficulty=difficulty, secret=secret)
@@ -135,7 +133,6 @@ class Session:
         self.wins += 1
         self.total_score += game_round.score()
         used = game_round.attempts_used
-
         if self.best_attempts is None or used < self.best_attempts:
             self.best_attempts = used
 
@@ -157,7 +154,6 @@ def message_for(result: GuessResult, game_round: GameRound, guess: int) -> str:
 
     low, high = game_round.narrowed_range()
     range_hint = f" It's between {low} and {high}." if low <= high else ""
-
     if result is GuessResult.TOO_LOW:
         return f"Too low!{range_hint}"
     if result is GuessResult.TOO_HIGH:
@@ -202,7 +198,9 @@ def prompt_name() -> str:
 def prompt_difficulty() -> Difficulty:
     print("\nChoose difficulty:")
     for index, diff in enumerate(DIFFICULTIES, start=1):
-        print(f"  {index}) {diff.key.capitalize():6} ({diff.low}–{diff.high}, {diff.max_attempts} attempts)")
+        print(
+            f"  {index}) {diff.key.capitalize():6} ({diff.low}–{diff.high}, {diff.max_attempts} attempts)"
+        )
     labels = {str(i): d.key for i, d in enumerate(DIFFICULTIES, start=1)}
     while True:
         choice = input("Enter 1, 2, or 3 [default 2]: ").strip() or "2"
@@ -275,7 +273,6 @@ def run_round(player_name: str, difficulty: Difficulty) -> GameRound:
         f"from {difficulty.low} to {difficulty.high}."
     )
     print(f"You have {difficulty.max_attempts} guesses. Good luck!\n")
-
     while game_round.attempts_remaining > 0:
         guess = read_guess(game_round)
         if guess is None:
@@ -302,7 +299,6 @@ def run_round(player_name: str, difficulty: Difficulty) -> GameRound:
 def main() -> None:
     banner("Welcome to the Number Guessing Game!")
     session = Session(player_name=prompt_name())
-
     while True:
         difficulty = prompt_difficulty()
         game_round = run_round(session.player_name, difficulty)

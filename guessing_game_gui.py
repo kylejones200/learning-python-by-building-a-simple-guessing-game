@@ -24,7 +24,6 @@ class GuessingGameApp(tk.Tk):
         self.minsize(420, 480)
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
-
         self.session: Session | None = None
         self.game_round: GameRound | None = None
         self.difficulty_var = tk.StringVar(value="medium")
@@ -35,7 +34,6 @@ class GuessingGameApp(tk.Tk):
         self.attempts_var = tk.StringVar()
         self.range_var = tk.StringVar()
         self.stats_var = tk.StringVar()
-
         self._build_setup_frame()
         self._build_play_frame()
         self.show_setup()
@@ -43,18 +41,15 @@ class GuessingGameApp(tk.Tk):
     def _build_setup_frame(self) -> None:
         self.setup_frame = ttk.Frame(self, padding=16)
         self.setup_frame.columnconfigure(0, weight=1)
-
         ttk.Label(
             self.setup_frame,
             text="Number Guessing Game",
             font=("", 16, "bold"),
         ).grid(row=0, column=0, sticky="w", pady=(0, 12))
-
         ttk.Label(self.setup_frame, text="Your name").grid(row=1, column=0, sticky="w")
         name_entry = ttk.Entry(self.setup_frame, textvariable=self.name_var, width=32)
         name_entry.grid(row=2, column=0, sticky="ew", pady=(0, 12))
         name_entry.focus_set()
-
         ttk.Label(self.setup_frame, text="Difficulty").grid(row=3, column=0, sticky="w")
         diff_frame = ttk.Frame(self.setup_frame)
         diff_frame.grid(row=4, column=0, sticky="w", pady=(0, 16))
@@ -66,20 +61,17 @@ class GuessingGameApp(tk.Tk):
                 variable=self.difficulty_var,
             ).pack(anchor="w")
 
-        ttk.Button(
-            self.setup_frame, text="Start game", command=self.start_game
-        ).grid(row=5, column=0, sticky="ew")
-
+        ttk.Button(self.setup_frame, text="Start game", command=self.start_game).grid(
+            row=5, column=0, sticky="ew"
+        )
         self.bind("<Return>", lambda _e: self._on_return())
 
     def _build_play_frame(self) -> None:
         self.play_frame = ttk.Frame(self, padding=16)
         self.play_frame.columnconfigure(0, weight=1)
         self.play_frame.rowconfigure(4, weight=1)
-
         self.greeting_label = ttk.Label(self.play_frame, font=("", 12, "bold"))
         self.greeting_label.grid(row=0, column=0, sticky="w", pady=(0, 8))
-
         info = ttk.Frame(self.play_frame)
         info.grid(row=1, column=0, sticky="ew", pady=(0, 8))
         info.columnconfigure(1, weight=1)
@@ -87,7 +79,6 @@ class GuessingGameApp(tk.Tk):
         ttk.Label(info, textvariable=self.attempts_var).grid(row=0, column=1, sticky="w")
         ttk.Label(info, text="Possible range:").grid(row=1, column=0, sticky="w")
         ttk.Label(info, textvariable=self.range_var).grid(row=1, column=1, sticky="w")
-
         self.feedback_label = ttk.Label(
             self.play_frame,
             textvariable=self.feedback_var,
@@ -95,19 +86,16 @@ class GuessingGameApp(tk.Tk):
             foreground="#1a5276",
         )
         self.feedback_label.grid(row=2, column=0, sticky="ew", pady=(0, 8))
-
         ttk.Label(self.play_frame, text="Guess history").grid(row=3, column=0, sticky="w")
         history_frame = ttk.Frame(self.play_frame)
         history_frame.grid(row=4, column=0, sticky="nsew", pady=(0, 8))
         history_frame.columnconfigure(0, weight=1)
         history_frame.rowconfigure(0, weight=1)
-
         self.history_list = tk.Listbox(history_frame, height=8, activestyle="none")
         self.history_list.grid(row=0, column=0, sticky="nsew")
         scroll = ttk.Scrollbar(history_frame, orient="vertical", command=self.history_list.yview)
         scroll.grid(row=0, column=1, sticky="ns")
         self.history_list.configure(yscrollcommand=scroll.set)
-
         guess_row = ttk.Frame(self.play_frame)
         guess_row.grid(row=5, column=0, sticky="ew", pady=(0, 8))
         guess_row.columnconfigure(0, weight=1)
@@ -115,15 +103,12 @@ class GuessingGameApp(tk.Tk):
         self.guess_entry.grid(row=0, column=0, sticky="ew", padx=(0, 8))
         self.guess_button = ttk.Button(guess_row, text="Guess", command=self.submit_guess)
         self.guess_button.grid(row=0, column=1)
-
-        ttk.Label(
-            self.play_frame, textvariable=self.status_var, foreground="#555"
-        ).grid(row=6, column=0, sticky="w", pady=(0, 8))
-
-        ttk.Label(
-            self.play_frame, textvariable=self.stats_var, font=("", 9)
-        ).grid(row=7, column=0, sticky="w", pady=(0, 8))
-
+        ttk.Label(self.play_frame, textvariable=self.status_var, foreground="#555").grid(
+            row=6, column=0, sticky="w", pady=(0, 8)
+        )
+        ttk.Label(self.play_frame, textvariable=self.stats_var, font=("", 9)).grid(
+            row=7, column=0, sticky="w", pady=(0, 8)
+        )
         actions = ttk.Frame(self.play_frame)
         actions.grid(row=8, column=0, sticky="ew")
         actions.columnconfigure(0, weight=1)
@@ -166,7 +151,6 @@ class GuessingGameApp(tk.Tk):
         difficulty = DIFFICULTY_BY_KEY[self.difficulty_var.get()]
         self.game_round = GameRound.create(difficulty)
         self.show_play()
-
         self.greeting_label.configure(
             text=(
                 f"Hello, {self.session.player_name}! "
@@ -191,8 +175,7 @@ class GuessingGameApp(tk.Tk):
         d = r.difficulty
         low, high = r.narrowed_range()
         self.attempts_var.set(
-            f"{r.attempts_used} / {d.max_attempts} used "
-            f"({r.attempts_remaining} remaining)"
+            f"{r.attempts_used} / {d.max_attempts} used ({r.attempts_remaining} remaining)"
         )
         self.range_var.set(f"{low} – {high}")
 
@@ -247,14 +230,12 @@ class GuessingGameApp(tk.Tk):
         self._append_history(guess, text.split("!")[0].lower())
         self._set_feedback(text)
         self.guess_var.set("")
-
         if hint := self.game_round.next_hint():
             self.status_var.set(f"Hint: {hint}")
         else:
             self.status_var.set("")
 
         self._refresh_hud()
-
         if self.game_round.attempts_remaining <= 0:
             self._finish_round(won=False)
 
@@ -264,7 +245,6 @@ class GuessingGameApp(tk.Tk):
 
         self.session.record(self.game_round)
         player = self.session.player_name
-
         if won:
             self._set_feedback(win_message(self.game_round, player), success=True)
         else:
