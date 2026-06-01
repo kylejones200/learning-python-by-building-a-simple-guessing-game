@@ -11,14 +11,7 @@ Learning to code is most fun when you're building something interactive! In this
 
 - Importing and using modules - Getting user input - Working with variables and data types - Using conditional statements (if/elif/else) - Creating loops - String formatting
 
-## About
 
-Place the code for this article in this repository.
-The original article export is saved as `article.md`.
-
-## Files
-
-Add your `.ipynb`, `.py`, `.yaml`, `.js`, `.ts`, or other project files here.
 
 ## Disclaimer
 
